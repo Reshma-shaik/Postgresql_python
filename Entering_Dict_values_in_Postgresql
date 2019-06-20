@@ -1,0 +1,21 @@
+import psycopg2
+db = psycopg2.connect(user = "postgres",
+                                  password = "reshma44",
+                                  host = "127.0.0.1",
+                                  port = "5432",
+                                  database = "postgres")
+cursor = db.cursor()
+sql = "SELECT * FROM tab1"
+cursor.execute(sql)
+results = cursor.fetchall()
+dict={}
+for row in results:
+    key   =   row[0]
+    value =   row[1]
+    dict[key]=value
+ip=input("enter the name as key:")
+if ip in dict.keys():
+    print(dict[ip])
+else:
+    print("The name you have entered is not present")
+db.close()
